@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Register for Full Stack Conf</title>
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -14,13 +15,14 @@
       <span>Register for</span>
       <h1>Full Stack Conf</h1>
     </header>
+
     <form action="index.html" method="post">
 
       <fieldset>
         <legend>Basic Info</legend>
 
         <label for="name">Name:</label>
-        <input type="text" id="name" name="user_name" autofocus>
+        <input type="text" id="name" name="user_name">
 
         <label for="mail">Email:</label>
         <input type="email" id="mail" name="user_email">
@@ -32,10 +34,12 @@
           <option value="back-end developer">Back End Developer</option>
           <option value="designer">Designer</option>
           <option value="student">Student</option>
-          <option value="other" id="other-field">Other</option>
+          <option value="other">Other</option>
+
         </select>
-        <label for="other-input" id="other-title-label">Your Job Role</label>
-        <input type="text" id="other-title" placeholder="Your Job Role">
+        <!--dynamically edit input and label with jquery -->
+        <label id="otherLabel" for="input" >other occupation:</label>
+        <input id = "input" name = "occupation"></input>
       </fieldset>
 
       <fieldset class="shirt">
@@ -54,47 +58,43 @@
         <div>
           <label for="design">Design:</label>
           <select id="design" name="user_design">
-            <option value="selectdesign">Select Theme</option>
+            <option>Select Theme</option>
             <option value="js puns">Theme - JS Puns</option>
             <option value="heart js">Theme - I &#9829; JS</option>
           </select>
         </div>
 
         <div id="colors-js-puns" class="">
-          <label id="color-label" for="color">Color:</label>
+          <label for="color">Color:</label>
           <select id="color">
-            <!-- JS puns -->
-            <option id="selecttheme" value="selecttheme">Please select a T-shirt theme</option>
-            <option id="cornflowerblue" value="cornflowerblue">Cornflower Blue (JS Puns shirt only)</option>
-            <option id="darkslategrey" value="darkslategrey">Dark Slate Grey (JS Puns shirt only)</option>
-            <option id="gold" value="gold">Gold (JS Puns shirt only)</option>
-
-            <!-- I love JS -->
-            <option id="tomato" value="tomato">Tomato (I &#9829; JS shirt only)</option>
-            <option id="steelblue" value="steelblue">Steel Blue (I &#9829; JS shirt only)</option>
-            <option id="dimgrey" value="dimgrey">Dim Grey (I &#9829; JS shirt only)</option>
+            <option value="cornflowerblue">Cornflower Blue (JS Puns shirt only)</option>
+            <option value="darkslategrey">Dark Slate Grey (JS Puns shirt only)</option>
+            <option value="gold">Gold (JS Puns shirt only)</option>
+            <option value="tomato">Tomato (I &#9829; JS shirt only)</option>
+            <option value="steelblue">Steel Blue (I &#9829; JS shirt only)</option>
+            <option value="dimgrey">Dim Grey (I &#9829; JS shirt only)</option>
           </select>
         </div>
       </fieldset>
 
       <fieldset class="activities">
         <legend>Register for Activities</legend>
-        <label><input id="mainconf" data-price="200" type="checkbox" name="checkbox"> Main Conference — $200</label>
-        <label><input id="jsframeworks" type="checkbox" name="checkbox" data-price="100"> JavaScript Frameworks Workshop — Tuesday 9am-12pm, $100</label>
-        <label><input id="jslib" type="checkbox" name="checkbox" data-price="100"> JavaScript Libraries Workshop — Tuesday 1pm-4pm, $100</label>
-        <label><input id="express" type="checkbox" name="checkbox" data-price="100"> Express Workshop — Tuesday 9am-12pm, $100</label>
-        <label><input id="node" type="checkbox" name="checkbox" data-price="100"> Node.js Workshop — Tuesday 1pm-4pm, $100</label>
-        <label><input id="buildtools" type="checkbox" name="checkbox" data-price="100"> Build tools Workshop — Wednesday 9am-12pm, $100</label>
-        <label><input id="npmw" type="checkbox" name="checkbox" data-price="100"> npm Workshop — Wednesday 1pm-4pm, $100</label>
+        <label><input type="checkbox" name="all"> Main Conference — $200</label>
+        <label><input type="checkbox" name="js-frameworks"> JavaScript Frameworks Workshop — Tuesday 9am-12pm, $100</label>
+        <label><input type="checkbox" name="js-libs"> JavaScript Libraries Workshop — Tuesday 1pm-4pm, $100</label>
+        <label><input type="checkbox" name="express"> Express Workshop — Tuesday 9am-12pm, $100</label>
+        <label><input type="checkbox" name="node"> Node.js Workshop — Tuesday 1pm-4pm, $100</label>
+        <label><input type="checkbox" name="build-tools"> Build tools Workshop — Wednesday 9am-12pm, $100</label>
+        <label><input type="checkbox" name="npm"> npm Workshop — Wednesday 1pm-4pm, $100</label>
 
       </fieldset>
-      <fieldset class="payment-info">
+      <fieldset>
         <legend>Payment Info</legend>
 
         <label for="payment">I'm going to pay with:</label>
         <select id="payment" name="user_payment">
-          <option id="select-method" value="select_method">Select Payment Method</option>
-          <option selected="selected" value="credit card">Credit Card</option>
+          <option value="select_method">Select Payment Method</option>
+          <option value="creditCard">Credit Card</option>
           <option value="paypal">PayPal</option>
           <option value="bitcoin">Bitcoin</option>
         </select>
@@ -141,21 +141,25 @@
           </select>
         </div>
 
-        <div id="paypal-div">
+        <div>
         	<p>If you selected the PayPal option we'll take you to Paypal's site to set up your billing information, when you click “Register” below.</p>
         </div>
 
-        <div id="bitcoin-div">
+        <div>
         	<p>If you selected the Bitcoin option we'll take you to the Coinbase site to set up your billing information. Due to the nature of exchanging Bitcoin, all Bitcoin transactions will be final.</p>
         </div>
 
       </fieldset>
 
       <button type="submit">Register</button>
-      <button type="reset">Reset</button>
+
     </form>
 
 	</div>
-  <script src="js/app.js"></script>
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>

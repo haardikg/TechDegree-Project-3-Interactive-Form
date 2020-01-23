@@ -101,10 +101,6 @@ input[type="radio"] {
 	display: inline-block;
 }
 
-input[type="number"] {
-  width: 100%;
-}
-
 button {
 	color: #fff;
 	padding: .55em 1.25em;
@@ -184,11 +180,18 @@ button:hover {
 	}
 }
 
-#name:focus {
-  color: teal;
+/* =================================
+  Added Styles
+==================================== */
+.invalidStyle{
+  border: red solid 1px;
+  box-shadow: -1px -1px;
 }
 
-.error {
-  color: red;
-  padding-top: 8px;
+.validStyle{
+  border: solid rgb(147, 252, 104) 1px;
+  box-shadow: 1px 1px;
+}
+.money{
+  color: rgb(147, 252, 104);
 }
